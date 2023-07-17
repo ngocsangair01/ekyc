@@ -2,6 +2,7 @@ import 'package:ekyc/features/check_idCard_info/check_idCard_info_page.dart';
 import 'package:ekyc/features/nfc/nfc_page.dart';
 import 'package:ekyc/features/nfc/result/nfc_result_page.dart';
 import 'package:ekyc/features/qr_code/qr_guide.dart';
+import 'package:ekyc/features/qr_code/result/qr_result_page.dart';
 import 'package:get/get.dart';
 
 import '../features/area/area_page.dart';
@@ -98,6 +99,10 @@ abstract class AppPages {
     GetPage(
       name: Routes.routeQRGuidePage,
       page: () => QRGuidePage(),
+    ),
+    GetPage(
+      name: Routes.routeQRResultPage,
+      page: () => QRResultPage(),
     ),
   ];
 }

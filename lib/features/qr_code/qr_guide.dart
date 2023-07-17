@@ -1,4 +1,5 @@
 import 'package:ekyc/base/base.dart';
+import 'package:ekyc/features/qr_code/qr_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -9,6 +10,8 @@ import '../utils_widget.dart';
 
 class QRGuidePage extends BaseGetWidget {
   const QRGuidePage({Key? key}) : super(key: key);
+
+  QRController get controller => Get.put(QRController());
   @override
   Widget buildWidgets() {
     return _buildBody();
@@ -42,7 +45,7 @@ class QRGuidePage extends BaseGetWidget {
                 ),
               ),
             ),
-            _buildAction(),
+            _buildAction(controller),
           ],
         ),
       ),
@@ -134,13 +137,13 @@ Widget _buildDivider() {
   ).paddingSymmetric(vertical: AppDimens.paddingVerySmall);
 }
 
-Widget _buildAction() {
+Widget _buildAction(QRController controller) {
   return Column(
     children: [
       BaseButton.buildButton(
         AppStr.start.toUpperCase().tr,
         () {
-          Get.toNamed(Routes.routeGuideTakePicture);
+          controller.scanBarcode();
         },
         colors: AppColors.colorOrangeBtn,
       ).paddingSymmetric(horizontal: AppDimens.paddingMedium),
